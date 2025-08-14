@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Manufacturing Impact on World GDP</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .insight-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: 16px;
+            padding: 24px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .insight-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 12px;
+        }
+
+        .insight-text {
+            color: #a16207;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .impact-timeline {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border-radius: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(4px);
+        }
+
+        .timeline-period {
+            font-weight: 600;
+            color: #475569;
+            min-width: 120px;
+            font-size: 1rem;
+        }
+
+        .timeline-impact {
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .data-source {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .highlight-number {
+            color: #059669;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .main-card {
+                padding: 24px;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-card">
+            <div class="header">
+                <h1 class="title">AI Manufacturing Efficiency</h1>
+                <p class="subtitle">Impact of 1% Efficiency Gain on World GDP</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">$111T</div>
+                    <div class="metric-label">Global GDP 2024</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$16T</div>
+                    <div class="metric-label">Global Manufacturing Output</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$160-180B</div>
+                    <div class="metric-label">Direct Annual Impact (1%)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">0.15%</div>
+                    <div class="metric-label">of World GDP</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">AI's Projected Economic Impact Timeline</h3>
+                <canvas id="impactChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Manufacturing Share by Region (2024)</h3>
+                <canvas id="manufacturingChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="insight-boxes">
+                <div class="insight-box">
+                    <div class="insight-title">🚀 Multiplier Effects</div>
+                    <div class="insight-text">
+                        A 1% manufacturing efficiency gain creates cascading benefits: supply chain optimization, competitive advantages, and investment reallocation that can amplify impact by <span class="highlight-number">3-5x</span> over time.
+                    </div>
+                </div>
+                <div class="insight-box">
+                    <div class="insight-title">📊 Long-term Projection</div>
+                    <div class="insight-text">
+                        Research shows AI could contribute <span class="highlight-number">$15.7 trillion</span> to global economy by 2030, with manufacturing efficiency being a key driver of this transformation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-timeline">
+                <h3 class="chart-title">Impact Timeline: From Direct Savings to Economic Transformation</h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-period">Year 1-2:</div>
+                    <div class="timeline-impact">
+                        <strong>Direct Impact:</strong> $160-180B in annual cost savings and efficiency gains across global manufacturing sector
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-period">Year 3-5:</div>
+                    <div class="timeline-impact">
+                        <strong>Supply Chain Effects:</strong> Reduced costs ripple through entire economy, enhanced competitiveness for AI-adopting regions
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-period">Year 5-10:</div>
+                    <div class="timeline-impact">
+                        <strong>Economic Transformation:</strong> Potential 3-7% boost to global GDP growth, reshaping manufacturing competitiveness worldwide
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-source">
+                Data sources: World Bank, IMF, McKinsey, Goldman Sachs Research, PwC Global AI Study
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Impact Timeline Chart
+        const ctx1 = document.getElementById('impactChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['2024', '2025', '2026', '2027', '2028', '2029', '2030'],
+                datasets: [{
+                    label: 'AI Economic Impact (Trillions $)',
+                    data: [0.2, 0.8, 2.1, 4.2, 7.8, 12.1, 15.7],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Economic Impact (Trillions USD)'
+                        },
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        hoverRadius: 8
+                    }
+                }
+            }
+        });
+
+        // Manufacturing Distribution Chart
+        const ctx2 = document.getElementById('manufacturingChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['China', 'United States', 'Japan', 'Germany', 'South Korea', 'Others'],
+                datasets: [{
+                    data: [31, 16, 7, 6, 4, 36],
+                    backgroundColor: [
+                        '#ef4444',
+                        '#3b82f6',
+                        '#10b981',
+                        '#f59e0b',
+                        '#8b5cf6',
+                        '#6b7280'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+    </script>
+</body>
+</html>
