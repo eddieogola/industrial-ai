@@ -194,6 +194,124 @@
                 grid-template-columns: 1fr;
             }
         }
+
+         .source-section {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .source-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .source-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .source-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .source-org {
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 8px;
+        }
+
+        .source-study {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .source-data {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2));
+            padding: 25px;
+            border-radius: 16px;
+            border-left: 4px solid #3b82f6;
+            margin: 30px 0;
+        }
+
+        .highlight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+
+        .highlight-text {
+            color: #cbd5e1;
+        }
+
+        .navigation {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #3b82f6;
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .story-title {
+                font-size: 2rem;
+            }
+            
+            .story-container {
+                padding: 20px 15px;
+            }
+            
+            .chapter-content {
+                padding: 25px;
+            }
+            
+            .navigation {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -235,13 +353,13 @@
 
             <div class="insight-boxes">
                 <div class="insight-box">
-                    <div class="insight-title">🚀 Multiplier Effects</div>
+                    <div class="insight-title">Multiplier Effects</div>
                     <div class="insight-text">
                         A 1% manufacturing efficiency gain creates cascading benefits: supply chain optimization, competitive advantages, and investment reallocation that can amplify impact by <span class="highlight-number">3-5x</span> over time.
                     </div>
                 </div>
                 <div class="insight-box">
-                    <div class="insight-title">📊 Long-term Projection</div>
+                    <div class="insight-title">Long-term Projection</div>
                     <div class="insight-text">
                         Research shows AI could contribute <span class="highlight-number">$15.7 trillion</span> to global economy by 2030, with manufacturing efficiency being a key driver of this transformation.
                     </div>
@@ -272,6 +390,64 @@
                     </div>
                 </div>
             </div>
+
+            <div class="source-section">
+            <h3 class="source-title">📚 Research Sources & Data</h3>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 30px;">
+                Click on any source card to explore the original research behind our analysis
+            </p>
+            
+            <div class="source-grid">
+                <a href="https://data.worldbank.org/indicator/NV.IND.MANF.ZS" target="_blank" class="source-card" id="worldbank">
+                    <div class="source-org">World Bank</div>
+                    <div class="source-study">Manufacturing Value Added Data</div>
+                    <div class="source-data">Global GDP: $111.3T (2024), Manufacturing shares by country</div>
+                </a>
+
+                <a href="https://www.pwc.com/gx/en/issues/data-and-analytics/publications/artificial-intelligence-study.html" target="_blank" class="source-card" id="pwc">
+                    <div class="source-org">PwC Global AI Study</div>
+                    <div class="source-study">Sizing the Prize</div>
+                    <div class="source-data">$15.7T AI impact by 2030, productivity multipliers</div>
+                </a>
+
+                <a href="https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent" target="_blank" class="source-card" id="goldman">
+                    <div class="source-org">Goldman Sachs Research</div>
+                    <div class="source-study">Generative AI Economic Impact</div>
+                    <div class="source-data">7% GDP boost potential, productivity timelines</div>
+                </a>
+
+                <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" class="source-card" id="mckinsey">
+                    <div class="source-org">McKinsey Global Institute</div>
+                    <div class="source-study">Economic Potential of Generative AI</div>
+                    <div class="source-data">$2.6-4.4T annual impact, 75% value in 4 key areas</div>
+                </a>
+
+                <a href="https://my.idc.com/getdoc.jsp?containerId=prUS52600524" target="_blank" class="source-card" id="idc">
+                    <div class="source-org">IDC Research</div>
+                    <div class="source-study">AI Economic Impact Analysis</div>
+                    <div class="source-data">$19.9T contribution through 2030, 3.5% of GDP</div>
+                </a>
+
+                <a href="https://www.china-briefing.com/news/china-manufacturing-industry-tracker-2024-25/" target="_blank" class="source-card" id="china-brief">
+                    <div class="source-org">China Briefing</div>
+                    <div class="source-study">Manufacturing Industry Tracker</div>
+                    <div class="source-data">China: 30% global manufacturing, 26% of domestic GDP</div>
+                </a>
+
+                <a href="https://stat.unido.org/portal/storage/file/publications/qiip/World_Manufacturing_Production_2024_Q1.pdf" target="_blank" class="source-card" id="unido">
+                    <div class="source-org">UNIDO</div>
+                    <div class="source-study">World Manufacturing Production</div>
+                    <div class="source-data">Global manufacturing output statistics and trends</div>
+                </a>
+
+                <a href="https://tradingeconomics.com/united-states/manufacturing-value-added-percent-of-gdp-wb-data.html" target="_blank" class="source-card" id="us-trade">
+                    <div class="source-org">Trading Economics / World Bank</div>
+                    <div class="source-study">US Manufacturing Data</div>
+                    <div class="source-data">US manufacturing: 16% global share, $2.5T+ GDP contribution</div>
+                </a>
+            </div>
+        </div>
+    </div>
 
             <div class="data-source">
                 Data sources: World Bank, IMF, McKinsey, Goldman Sachs Research, PwC Global AI Study
